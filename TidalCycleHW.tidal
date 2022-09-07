@@ -1,0 +1,26 @@
+d1
+$ off 0.25 (# vowel "<a o i>")
+$ off 0.125 (|+| 12)
+$ n "[g(8,8), d(3,8), c(3,8,2) d(3,8,2)]/2" #s "arpy"
+# pan rand
+
+d2 $ off 0.25 (|+| 7)
+$ note "g d c d" # s "bass"
+
+d4 $ n (scale "techno" "0 1 2 3 4 5 6 7") # sound "superpiano"
+
+d5 $ n (arpg "'major7 [0,4,7,11]") # sound "bass"
+
+d3 $ off 0.25 (|+| 7)
+$  sound "[gabba*4, hh*8]"
+#gain 1.1
+
+let pats = [("drums", s "drum cp*2"),
+            ("melody", s "arpy:2 arpy:3 arpy:5"),
+            ("craziness", s "cp:4*8" # speed ( sine + 0.5))
+           ]
+    fx = [("higher", (# speed 2))]
+in
+d1 $ ur 8 "[drums, melody] [drums,craziness,melody] melody:higher" pats fx
+
+hush
