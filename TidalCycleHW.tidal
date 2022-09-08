@@ -1,26 +1,24 @@
 d1
+$ jux (rev)
 $ off 0.25 (# vowel "<a o i>")
 $ off 0.125 (|+| 12)
-$ n "[g(8,8), d(3,8), c(3,8,2) d(3,8,2)]/2" #s "arpy"
+$ n "[a(3,8) e(3,8) f(3,8,2) c(3,8,2)]/2" #s "arpy"
 # pan rand
+xfade 3 $ off 0.125 (|+| 5) $ note "g*4 d c d*4" # s "arpy" -- #n (run 118)
 
-d2 $ off 0.25 (|+| 7)
-$ note "g d c d" # s "bass"
+d2 $ note "g f c e" # s "d"
+xfade 2 silence
 
-d4 $ n (scale "techno" "0 1 2 3 4 5 6 7") # sound "superpiano"
+d1 silence
 
-d5 $ n (arpg "'major7 [0,4,7,11]") # sound "bass"
+d3 $ off 0.125 (|+| 5) $ note "g*4 d c d*4" # s "hh"
 
-d3 $ off 0.25 (|+| 7)
-$  sound "[gabba*4, hh*8]"
-#gain 1.1
+d4 $ n (scale "techno" "9 2 3 4 5 6 8 7") # sound "superpiano"
 
-let pats = [("drums", s "drum cp*2"),
-            ("melody", s "arpy:2 arpy:3 arpy:5"),
-            ("craziness", s "cp:4*8" # speed ( sine + 0.5))
-           ]
-    fx = [("higher", (# speed 2))]
-in
-d1 $ ur 8 "[drums, melody] [drums,craziness,melody] melody:higher" pats fx
+d5 $ n (arpg "'techno [0,4,7,11]") # sound "bd"
+
+xfade 3 $jux (rev) $ s "arpy:22*8 gabba*4" # n (run 10)
+
+d6 $ off 0.25 (|+| 7)$  sound "[gabba*4, hh*8]" #gain 1.2
 
 hush
