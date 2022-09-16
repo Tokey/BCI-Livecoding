@@ -1,13 +1,13 @@
 d1
 $ jux (rev)
 $ off 0.125 (|+| 12)
-$ note "[a(3,8) d(3,8) g(3,8,2) c(3,8,2)]/4" #s "hardkick"
+$ note "[a(3,8) d(3,8) g(3,8,2) c(3,8,2)]/8" #s "hardkick"
 # pan rand
 
-d2 $ sound "popkick*8" # n (irand 8)
+d2 $ sound "popkick*4" # n (irand 8)
 
-d6 $ sound "[gabba*1, hh*8 , ~cp]" #gain 1
+d3 $ sound "[gabba*1, hh*2 , ~cp]" #gain 1.2
 
-xfade 6 silence
+xfade 3 silence
 
 hush
