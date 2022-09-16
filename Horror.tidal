@@ -1,0 +1,15 @@
+
+d1 $ sound "koy*8" # n (irand 8) #gain 0.9
+
+d2
+$jux (rev)
+$ off 0.25 (# vowel "<a o i>")
+$ off 0.125 (|+| 12)
+$ note "[a(3,8) d g c]/4" #s "breath"
+# pan rand
+# gain 2.5
+
+d3 $jux (rev) $ s "mp3:2" # n (run 31)
+xfade 2 silence
+d4 $ off 0.125 (|+| 5) $ note "g*3 d c d*2" # s "subroc3d"  #n (run 118)
+hush
