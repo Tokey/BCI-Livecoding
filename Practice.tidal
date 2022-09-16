@@ -1,0 +1,36 @@
+d1
+$jux (rev)
+$ off 0.25 (# vowel "<a o i>")
+$ off 0.125 (|+| 12)
+$ note "[a(3,8) d g c]/4" #s "breath"
+# pan rand
+xfade 1 $ off 0.125 (|+| 5) $ note "g d c d" # s "subroc3d"  #n (run 118)
+
+d2 $ note "g f c e" # s "d"
+xfade 2 silence
+
+d1 silence
+
+d3 $ note "g f c e" # s "sf"
+
+d4 $ n (scale "techno" "6 9") # sound "808cy"
+
+d5 $ n (arpg "'techno [3,4,7,11]") # sound "subroc3d"
+
+xfade 3 $jux (rev) $ s "mp3" # n (run 10)
+
+d6 $ off 0.25 (|+| 7)$  sound "[bottle:2 bottle]" #gain 1 # n (run 5)
+
+d1 $ n (arp "<up down up>" "<a'm9'8 e'7sus4'8>") # sound "tink"
+d1 $ s "tink*8" # cutoff (perlinWith (saw * 4) * 2000)
+d1
+ $ s "[breath*32]"
+ # lpf (range 60 5000 $ perlin2With (cosine*2) (sine*2))  --- CREEPY AF
+ # lpq 0.3
+d1 $ sound "koy*8" # n (irand 8)
+hush
+-- mp3 is creepy
+-- koy is deeeeep
+-- 808 sounds happy
+-- subroc3d sounds creepy
+-- sine futuristic

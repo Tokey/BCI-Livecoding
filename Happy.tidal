@@ -1,0 +1,27 @@
+d1
+$ jux (rev)
+$ off 0.25 (|+| 7)
+$ off 0.125 (|+| 12)
+$ note "[a(2,3) d(2,3) g(2,3) c(2,3)]/4" #s "tink"
+#gain 1.5
+# pan rand
+
+
+xfade 1 $ off 0.125 (|+| 5) $ note "g d c d*4" # s "808"  #n (run 138)
+
+d2 $ note "g f c e" # s "d"
+xfade 3 silence
+
+d1 silence
+
+d3 $ note "g d c d" # s "insect" # n (run 4)
+
+d4 $ n (scale "techno" "6 9") # sound "808cy"
+
+d5 $ n (arpg "'techno [0,4,7,11]") # sound "coins"
+
+d8 $jux (rev) $ s "birds" # n (run 10)
+
+d6 $ off 0.25 (|+| 7)$  sound "[bottle bottle:5*4]" #gain 1 # n (run 5)
+
+hush
