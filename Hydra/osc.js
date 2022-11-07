@@ -7,34 +7,45 @@
 msg.setPort(5000)
 
 // do something when a message is received at address '/test'
-msg.on('/muse/acc', (args) => {
-// log osc results to console
- log(args)
-})
 
 // uses argument as variables in hydra
-freq = 1
-rot = 0.2
-vol3 = 1
+//accelerometer argument
+xAcc = 1
+yAcc = 0.2
+zAcc = 1
+
+//EEG
 alpha = 0.5
+beta = 0.5
+state = 1
+
 pixelateValue = 40
+
 msg.on('/muse/acc', (args) => {
- freq=args[0]*5
- vol3 = args[1]
+ xAcc=args[0]*5
+ yAcc = args[1]
 })
-msg.on('/muse/eeg', (args) => {
- alpha = args[3]/args[4]
+msg.on('/muse/elements/alpha_absolute', (args) => {
+ alpha = args[0]
+})
+
+msg.on('/muse/elements/beta_absolute', (args) => {
+ beta = args[0]
 })
 
 msg.on('/play', (args) => {
-
   rot += 10
 })
 
 pattern = () => osc(10,1)
-.color(()=>freq,()=>vol3,0.5)
+.color(()=>xAcc,()=>yAcc,0.5)
 .mult(osc().rotate(()=>rot))
 
 pattern()
   .mult(pattern())
-  .out()
+  .out(o0)
+
+osc(20, 0.5, 9)
+.kaleid(10)
+.color(0, ()=>beta, 0).out(o1)
+render(o0)
