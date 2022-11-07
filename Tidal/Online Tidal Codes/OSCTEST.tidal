@@ -23,7 +23,16 @@ stream <- startStream defaultConfig oscmap
 
 d = streamReplace stream
 
-d 1 $ s "bd"
+/// to stop
+d 2 $s ""
+
+d 1 $ jux (rev)
+$ off 0.25 (# vowel "<a o i>")
+$ off 0.125 (|+| 12)
+$ n "[a(3,8) e(3,8) f(3,8,2) c(3,8,2)]/2" #s "arpy"
+# pan rand
+
+d 2 $ off 0.25 (|+| 7)$  sound "[gabba*4, hh*8]" #gain 1.2
 
 d1
 $ jux (rev)
@@ -33,8 +42,9 @@ $ n "[a(3,8) e(3,8) f(3,8,2) c(3,8,2)]/2" #s "arpy"
 # pan rand
 xfade 3 $ off 0.125 (|+| 5) $ note "g*4 d c d*4" # s "arpy" -- #n (run 118)
 
-d2 $ note "g f c e" # s "d"
-xfade 2 silence
+d 2 $ note "g f c e" # s "d"
+hush
+xfade oscplay silence
 
 d1 silence
 
