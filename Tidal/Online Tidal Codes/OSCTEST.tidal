@@ -9,6 +9,21 @@ let target =
               oBusPort = Nothing      -- Also SuperDirt specific
              }
 
+             oscplay = OSC "/play" $ ArgList [("s", Nothing),
+                                     ("vowel", Just $ VS "a"),
+                                     ("pan", Just $ VF 0.5),
+                                     ("volume", Just $ VF 1),
+                                     ("cut", Just $ VI 1),
+                                     ("intensity", Just $ VI 0)
+                                   ]
+let oscmap = [(target, [oscplay]),
+                    (superdirtTarget, [superdirtShape])
+                ]
+stream <- startStream defaultConfig oscmap
+
+d = streamReplace stream
+
+d 1 $ s "bd"
 
 d1
 $ jux (rev)
