@@ -11,8 +11,8 @@ msg.on('/play', (args) => {
     if(hh==2)hh=4
     else hh=2
   }
-
 })
+
 shape(()=>b,0.8,0.1)
   .mult(gradient(1))
   .repeat(()=>hh*18,19)

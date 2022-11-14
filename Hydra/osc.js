@@ -19,7 +19,9 @@ alpha = 0.5
 beta = 0.5
 state = 1
 
-pixelateValue = 40
+rot=0
+b=0
+hh=0
 
 msg.on('/muse/acc', (args) => {
  xAcc=args[0]*5
@@ -34,18 +36,27 @@ msg.on('/muse/elements/beta_absolute', (args) => {
 })
 
 msg.on('/play', (args) => {
-  rot += 10
+  if(args[0]=="bd"){
+      rot += 1
+  }
+
+  if(args[0]=="hh"){
+    rot += 2
+  }
 })
 
 pattern = () => osc(10,1)
-.color(()=>xAcc,()=>yAcc,0.5)
-.mult(osc().rotate(()=>rot))
+.color(()=>xAcc,0.8, ()=>yAcc)
+.mult(shape(2).rotate(()=>rot))
 
 pattern()
-  .mult(pattern())
+  .scale(2)
+  .repeatX(2)
+  .repeatY(2)
   .out(o0)
 
 osc(20, 0.5, 9)
 .kaleid(10)
-.color(0, ()=>beta, 0).out(o1)
-render(o0)
+.color(0, 0, ()=>beta).out(o1)
+
+render(o1)
