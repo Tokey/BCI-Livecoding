@@ -16,6 +16,8 @@ let target =
                                      ("cut", Just $ VI 1),
                                      ("intensity", Just $ VI 0)
                                    ]
+              let oscplay = OSC "/play" Named {requiredArgs = ["s"]}
+
 let oscmap = [(target, [oscplay]),
                     (superdirtTarget, [superdirtShape])
                 ]
@@ -33,6 +35,7 @@ $ n "[a(3,8) e(3,8) f(3,8,2) c(3,8,2)]/2" #s "arpy"
 # pan rand
 
 d 2 $ off 0.25 (|+| 7)$  sound "[gabba, hh*2]" #gain 1
+
 
 d 2 $sound "[arpy*8, gabba*2]" #gain 1
 
