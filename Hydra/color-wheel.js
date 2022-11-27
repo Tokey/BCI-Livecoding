@@ -17,6 +17,9 @@ b3 = 0
 
 
 scrollmax=0.4
+
+currentValue=0
+targetValue = 0.7
 t = 0.01
 
 // update = () => t+=0.01
@@ -37,7 +40,7 @@ shape([4,5,6,5,4].fast(1),0.4,0.01)
 .repeatY(3)
 .out(o1)
 
-src(o0).blend(o1,[0.2,0.8]).mult(noise(0.1,0.1)).hue([0,0.4]).out(o2)
+src(o0).blend(o1,0.5).hue(()=> currentValue = Lerp(currentValue,targetValue,t)).out(o2)
 
 render(o2)
 // [] array will
