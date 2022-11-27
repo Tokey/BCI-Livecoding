@@ -31,6 +31,7 @@ d1 $ sound "koy*8" # n (irand 8)
 d1 $ sound "tink*4" # n (irand 8)
 d1 $ sound "amencutup*8" # n (irand 8)
 d1 $ sound "birds*4" # n (irand 8)
+d2 $ sound "[bd*2 ss]/.6" -- Heartbeat
 hush
 -- mp3 is creepy
 -- koy is deeeeep
