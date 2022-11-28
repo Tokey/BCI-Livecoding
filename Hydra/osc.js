@@ -59,4 +59,4 @@ osc(20, 0.5, 9)
 .kaleid(10)
 .color(0, 0, ()=>beta).out(o1)
 
-render(o1)
+render(o0)
