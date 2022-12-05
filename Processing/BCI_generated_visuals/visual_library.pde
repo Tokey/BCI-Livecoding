@@ -265,49 +265,54 @@ class sinWaveAnimation{
   
   
   class sparklingCircles{
-    // not updated
-  float factor;
-  int len,number;
   float speed; 
-  float _b;
   float complete=0;
   color shapeColor;
-  float step,size;
-  float prevX, prevY;
- sparklingCircles (float f, float b, int l, float s, int st, float sp, color col){  
-   factor = f;
+  float size;
+  float posX,posY;
+  sparklingCircles (float x, float y, float s, float sp, color col){  
+   posX = x;
+   posY = y;
    size=s;
-   _b=b;
-   len = l;
-   number = int(l/st);
    speed=sp;
    shapeColor = col;
-   step = st;
-   prevX=width/2-len/2;
-   prevY=height/2;
   } 
   void update() { 
-    translate(-width/2, -height/2);
-    complete+=speed;
-    stroke(shapeColor);
-    strokeWeight(size);
+    fill(shapeColor);
     if(complete<PI){
-      if(complete<0.5*PI){
-          for(int i =0;i<number;i++){
-            if(i<sin(complete)*number){
-                 line(width/2-len/2+(i-1)*step,height/2+factor*sin(_b*(i-1)*step),width/2-len/2+i*step,height/2+factor*sin(_b*i*step));
-            }
-        } 
+      complete+=speed;
+      circle(posX,posY,size*sin(complete));
     }
-          else{
-          for(int i=number;i>0;i--){
-            if(i<sin(complete)*number){
-                 line(width/2-len/2+(number-i-1)*step,height/2+factor*sin((number-i-1)*_b*step),width/2-len/2+(number-i)*step,height/2+factor*sin((number-i)*_b*step));
-            }
-        } 
-        } 
-    }
-         noStroke();
-         translate(width/2, height/2);
-      } 
+    
   }
+}
+  
+class sparklingTriangles{
+  float speed; 
+  float complete=0;
+  color shapeColor;
+  float size;
+  float posX,posY;
+  float randomV;
+  sparklingTriangles (float x, float y, float s, float sp, color col)
+  {  
+   posX = x;
+   posY = y;
+   size=s;
+   speed=sp;
+   shapeColor = col;
+   randomV=random(-30,30);
+  } 
+  void update() 
+  { 
+    fill(shapeColor);
+    if(complete<PI){
+    complete+=speed;
+    triangle(posX,posY+size*sin(complete),posX-size*cos(1.0/6*PI)*sin(complete),posY-size*sin(1.0/6*PI)*sin(complete),posX+size*cos(1.0/6*PI)*sin(complete),posY+size*sin(1.0/6*PI)*sin(complete));
+ //     triangle(posX+randomV+random(-30,30),posY+randomV+size*sin(complete),posX+randomV-size*cos(1.0/6*PI)*sin(complete),posY+randomV-size*sin(1.0/6*PI)*sin(complete),posX+randomV+size*cos(1.0/6*PI)*sin(complete),posY+randomV+size*sin(1.0/6*PI)*sin(complete));
+ //       triangle(posX-2*randomV+random(-30,30),posY-2*randomV+size*sin(complete),posX-2*randomV-size*cos(1.0/6*PI)*sin(complete),posY-2*randomV-size*sin(1.0/6*PI)*sin(complete),posX-2*randomV+size*cos(1.0/6*PI)*sin(complete),posY+randomV+size*sin(1.0/6*PI)*sin(complete));
+
+  }
+    
+  }
+}
