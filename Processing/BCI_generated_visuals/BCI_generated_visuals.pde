@@ -120,8 +120,9 @@ void draw() {
 //  timer+=0.02f;
  // if(timer>gap){
  // timer=0;
-// RandomColorGroup(beta,beta);  
-  ColorBrightnessGroup((beta-minBeta)/(maxBeta-minBeta));
+// RandomColorGroup(beta,beta); 
+  //ColorBrightnessGroup((beta-minBeta)/(maxBeta-minBeta)); for bci
+  ColorBrightnessGroup(1); // testing
 // }
 }
  
@@ -147,13 +148,18 @@ void oscEvent(OscMessage theOscMessage) {
    if(theOscMessage.checkAddrPattern("/play") && theOscMessage.get(0).stringValue().equals("hh") ){
   hue = int(random(0,255));
   backgroundFill = new backgroundFill(0.05,1,Theme3);
+  
+}
+if(theOscMessage.checkAddrPattern("/play") && theOscMessage.get(0).stringValue().equals("cp") ){
   waveAnim = new sinWaveAnimation(250,random(0.02,0.06),800,8,3,0.01,Theme2);
 }
     
     if(theOscMessage.checkAddrPattern("/button3")){
      circleAnim=new circleAnimation(450,0.1,Theme2);
  }
- 
+  if(theOscMessage.checkAddrPattern("/play") && theOscMessage.get(0).stringValue().equals("arpy")){
+     sparklingTriAnim = new sparklingTriangles(random(0,width),random(0,height),random(30,50),0.1,RandomThemeColor(int(random(1,4))));
+ }
      if(theOscMessage.checkAddrPattern("/play") && theOscMessage.get(0).stringValue().equals("superpiano") ){
     //  sparklingTriAnim = new sparklingTriangles(random(0,width),random(0,height),random(30,50),0.1,RandomThemeColor(int(random(1,4))));
       triRingAnim=new triangleRingAnimation(400,30,20,0.03,Theme1);
