@@ -40,7 +40,7 @@ void setup() {
   colorMode(HSB,255,255,255,100);
   noStroke();
   background(0);  
-  size(1320,720); 
+  size(1920,720); 
   RandomColorGroup(0.6,0.6);
 
   //animations init 
@@ -121,8 +121,8 @@ void draw() {
  // if(timer>gap){
  // timer=0;
 // RandomColorGroup(beta,beta); 
-  //ColorBrightnessGroup((beta-minBeta)/(maxBeta-minBeta)); for bci
-  ColorBrightnessGroup(1); // testing
+  ColorBrightnessGroup((beta-minBeta)/(maxBeta-minBeta)); //for bci
+  //ColorBrightnessGroup(1); // testing
 // }
 }
  
@@ -135,6 +135,12 @@ void oscEvent(OscMessage theOscMessage) {
   alpha = theOscMessage.get(0).floatValue();
   }
     if(theOscMessage.checkAddrPattern("/muse/elements/beta_absolute")){
+  beta = theOscMessage.get(0).floatValue();
+  if(beta>maxBeta){maxBeta = beta;}
+  if(beta<minBeta){minBeta = beta;}
+  }
+  
+  if(theOscMessage.checkAddrPattern("/1/faderA")){
   beta = theOscMessage.get(0).floatValue();
   if(beta>maxBeta){maxBeta = beta;}
   if(beta<minBeta){minBeta = beta;}
